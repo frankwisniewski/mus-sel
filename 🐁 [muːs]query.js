@@ -15,6 +15,7 @@ var $ = (function () {
     afterHtml = h => this.each( i => i.insertAdjacentHTML('afterend',h),this)
     beforeHtml = h => this.each( i => i.insertAdjacentHTML('beforebegin',h),this)
     click = cb => this.each(i => i.addEventListener('click', cb),this)
+    parentEl = c => $(this.els[0].closest(c))
     create(t){
       let newNode = document.createElement(t)
       this.els[0].appendChild(newNode)
