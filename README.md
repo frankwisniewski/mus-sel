@@ -16,7 +16,7 @@ a small selector library
           .on(`mouseover`, el => $(el.target).style(``))
           .addStyle(`color:blue;`)
           .addStyle(`border:1px solid gray;`)
-        const myNewDiv = $(document.body)
+        $(document.body)
           .create(`div`)
           .addClass(`class1, class2`)
           .create(`button`)
