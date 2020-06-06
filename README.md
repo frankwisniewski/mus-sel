@@ -1,4 +1,4 @@
-# 🐁 *[muːs]*-query
+# 🐁 *[muːs]*-sel
 a small selector library
 
 ## Sample
