@@ -7,7 +7,7 @@ a small selector library
     <head>
       <meta charset="UTF-8">
       <title>Document</title>
-      <script type="text/javascript" src="classquery.js"></script>
+      <script type="text/javascript" src="mussel.js"></script>
     </head>
     <body>
       <h1>Test</h1>
