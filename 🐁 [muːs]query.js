@@ -15,7 +15,6 @@ var $ = (function () {
     afterHtml = h => this.each( i => i.insertAdjacentHTML('afterend',h),this)
     beforeHtml = h => this.each( i => i.insertAdjacentHTML('beforebegin',h),this)
     click = cb => this.each(i => i.addEventListener('click', cb),this)
-    parentEl = c => $(this.els[0].closest(c))
     create(t){
       let newNode = document.createElement(t)
       this.els[0].appendChild(newNode)
@@ -23,6 +22,7 @@ var $ = (function () {
     each = cb => (this.els.forEach( i => cb(i)), this)
     find = e => $(this.els[0].querySelector(e))
     getData = a => this.els[0].getAttribute('data-' + a)
+    getParent = e => $(this.els[0].parentNode)
     getValue = e => this.els[0].value
     hasClass = c => this.els[0].classList.contains(c)
     hasDataAtt = a => a in this.els[0].dataset
@@ -33,7 +33,7 @@ var $ = (function () {
     removeClass = c => this.each( e =>
       e.classList.remove(...c.split(',').map(s => s.trim())),this)
     toggleClass = c => this.each(e => e.classList.toggle(c),this)
-    getParent = e => $(this.els[0].parentNode)
+    parentEl = c => $(this.els[0].closest(c))
     removeStyle = () => this.each(e => e.removeAttribute('style'), this)
     setData = (k,v) => (this.els[0].dataset[k]=v, this)
     style = s => this.each(e => e.setAttribute('style',s), this)
