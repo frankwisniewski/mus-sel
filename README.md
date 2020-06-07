@@ -6,7 +6,7 @@ a small selector library
     <head>
       <meta charset=UTF-8>
       <title>Document</title>
-      <script type="text/javascript" src="mus-sel.js"></script>
+      <script src="mus-sel.js"></script>
     </head>
     <body>
        <main>
