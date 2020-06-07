@@ -40,6 +40,7 @@ a small selector library
                 border:1px solid #a00;
                 box-sizing:border-box;
                 border-radius:10px;
+                background:white;
               `)
               .create("h1")
               .resetStyles()
