@@ -35,7 +35,9 @@ var $ = (function () {
     toggleClass = c => this.each(e => e.classList.toggle(c),this)
     getParent = e => $(this.els[0].parentNode)
     removeStyle = () => this.each(e => e.removeAttribute('style'), this)
+    resetStyles = () => this.each(e => e.setAttribute('style','all:unset;'), this)
     setData = (k,v) => (this.els[0].dataset[k]=v, this)
+    setDataAll = (k,v) => this.each(e => e.dataset[k]=v, this)
     style = s => this.each(e => e.setAttribute('style',s), this)
     toNode = n => this.els[0]
     value = v => this.each( i => i.value=v, this)
