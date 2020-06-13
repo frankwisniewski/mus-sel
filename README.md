@@ -61,9 +61,6 @@ a small selector library
                 font-size:1em;line-height:1.75em;
                 font-family:sans-serif;text-align:center;color:#555;`,
     }
-      $('h1').style('color:blue;')
-
-
       myAlert = (header, message) =>{
         let alertBox = document.createElement('div')
         $(alertBox)
