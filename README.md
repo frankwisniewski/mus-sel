@@ -13,7 +13,7 @@ a small selector library
        <main>
         <h1>myAlert</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi rem illo dolore, expedita odit porro ullam? Minima ex harum, quidem.</p>
-        <button data-action=click>click me to see an modal Alert-Box</button>
+        <button data-action=showModal>click me to see an modal Alert-Box</button>
       </main>
       <script>
         $().insSheet (`
@@ -91,7 +91,7 @@ a small selector library
               .html("OK") 
             document.body.appendChild(alertBox)
       }
-      $(`[data-action="click"]`).click( () =>
+      $(`[data-action="showModal"]`).click( () =>
           myAlert("🐁 [muːs]-sel ","Chaining is funny 😁 !!<br><b>Modal Alertbox</b>")
       )
       </script>
