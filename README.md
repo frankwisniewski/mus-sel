@@ -1,6 +1,6 @@
 # 🐁 *[muːs]*-sel
 a small selector library
-## Sample to create an Modal Alert Box
+## Sample: create an Modal Alert Box
     <!DOCTYPE html>
     <html lang="de">
     <head>
