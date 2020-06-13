@@ -95,7 +95,5 @@ a small selector library
           myAlert("🐁 [muːs]-sel ","Chaining is funny 😁 !!<br><b>Modal Alertbox</b>")
       )
       </script>
-
-
     </body>
     </html>
