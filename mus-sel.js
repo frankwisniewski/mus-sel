@@ -11,9 +11,9 @@ var $ = (function (sel = null) {
     }
     //Vars
     version = '☕ 0.000001'
-    //utility functions
+    //utility
     insSheet = sheet => $(document.head).create('style').toNode().sheet.insertRule(sheet)
-    //functions for Nodes!
+    //nodes
     addClass = c => this.each(function (i) { i.classList.add(...c.split(',').map(s => s.trim()))}, this)  
     addOptions = o => this.each ( i => o.forEach((el,key) => i[key] = new Option(el,el)),this) 
     addStyle = s => this.each(e => e.setAttribute('style', 
