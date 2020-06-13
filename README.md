@@ -2,11 +2,12 @@
 a small selector library
 ## Sample to create an Modal Alert Box
     <!DOCTYPE html>
-    <html lang=de>
+    <html lang="de">
     <head>
-      <meta charset=UTF-8>
+      <meta charset="UTF-8">
+      <meta name=viewport content="width=device-width, initial-scale=1">
       <title>Document</title>
-      <script src="mus-sel.js"></script>
+      <script src="./mus-sel.js"></script>
     </head>
     <body>
        <main>
@@ -15,83 +16,89 @@ a small selector library
         <button data-action=click>click me to see an modal Alert-Box</button>
       </main>
       <script>
-      myAlert = (bgColor, color, message) =>
-        $(document.body)
+        $().insSheet (`
+    @media only screen{
+      @keyframes myAlertShow {
+        0% {transform: scale(0);}
+        50% {transform: scale(1.1);}
+        85% {transform: scale(0.90);}
+        100% {transform: scale(1);}
+      }
+      @keyframes myAlertHide{
+        0% {transform: scale(1.0);}
+        15% {transform: scale(1.1);}
+        30% {transform: scale(1.0);}
+        90% {transform: scale(0);opacity:0;}
+      }
+    }
+    `)
+      var myStyles={
+        container : `position:absolute;top:0px;
+              left:0px;height:100%;
+              width:100%;background:rgba(255,255,255,0.3);
+              display:flex;justify-content:center;
+              align-items:center;`,
+        message : `min-width:18em;
+                transform:scale(0);
+                max-width:90%;
+                animation: myAlertShow 0.24s;
+                animation-delay:100ms;
+                animation-fill-mode: forwards;
+                background:white;border-radius:8px;
+                box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);`,
+        button : `cursor:pointer;font-size:1.25em;
+                line-height:1.25em;font-family:sans-serif;
+                font-weight:bold;background:#88f;
+                border:1px solid #88f;
+                box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,1);
+                color:white;padding:0.375em 1.25em;
+                display:block;border-radius:.5em;
+                margin:1em auto;outline: none;`,
+        headline: `
+                font-size:1.5em;
+                font-family:sans-serif;text-align:center;color:#555;`,
+        paragraph : `display:block;
+                font-size:1em;line-height:1.75em;
+                font-family:sans-serif;text-align:center;color:#555;`,
+    }
+      $('h1').style('color:blue;')
+
+
+      myAlert = (header, message) =>{
+        let alertBox = document.createElement('div')
+        $(alertBox)
           .create("div")
-            .resetStyles()
-            .addStyle(`
-              position:absolute;
-              top:0px;
-              left:0px;
-              height:100%;
-              width:100%;
-              background:rgba(255,255,255,0.5);
-              display:flex;
-              justify-content:center;
-              align-items:center;
-              `)
+            .addStyle(myStyles.container)
             .setData("container", "alert")
             .create("div")
-              .resetStyles()
-              .addStyle(`
-                width:50%;
-                min-width:18em;
-                max-width:32em;
-                border:1px solid #a00;
-                box-sizing:border-box;
-                border-radius:10px;
-                background:white;
-              `)
-              .create("h1")
-              .resetStyles()
-              .addStyle(`
-                width:100%;
-                display:block;
-                padding:0 0.5em;
-                font-size:1.5em;
-                font-family:sans-serif;
-                font-weight:bold;
-                line-height:2em;
-                background:${bgColor};
-                color:${color};
-                box-sizing:border-box;
-                border-radius:9px 9px 0px 0px;`)
-              .html("Message:")
+              .addStyle(myStyles.message)
+            .create('h1')
+              .addStyle(myStyles.headline)
+              .html(`${header}`)
               .getParent()
-            .create("p")
-              .resetStyles()
-              .addStyle(`
-                width:100%;
-                display:block;
-                padding:1em 0.5em;
-                font-size:1.25em;
-                font-family:sans-serif;
-                text-align:center;
-                line-height:1.75em;
-                box-sizing:border-box;`)
+            .create('p')
+              .addStyle(myStyles.paragraph)
               .html(`${message}`)
               .getParent()
             .create('button')
-              .resetStyles()
-              .addStyle(`
-                cursor:pointer;
-                font-size:1.25em;
-                line-height:1.5em;
-                font-family:sans-serif;
-                font-weight:bold;
-                background:${bgColor};
-                color:${color};
-                padding:0em 1em;
-                display:block;
-                border-radius:.25em;
-                margin:1em auto;`)
-              .click(e => document.body
-                .removeChild($(e.target)
-                .parentEl(`[data-container="alert"]`).toNode()))
-              .html("OK")
+              .addStyle(myStyles.button)
+              .on('mouseover', e => e.target.style.background='#77f')
+              .on('mouseout', e => e.target.style.background='#88f')
+              .click(e => {
+                $(e.target).
+                    getParent()
+                    .addStyle('animation: myAlertHide 0.24s;')
+                window.setTimeout( () =>{
+                document.body
+                .removeChild(alertBox)},200)})
+              .html("OK") 
+            document.body.appendChild(alertBox)
+      }
       $(`[data-action="click"]`).click( () =>
-          myAlert("#800", "white", "simple <b>OneLiner</b> 😁 !!<br> create an modal alertbox")
+          myAlert("🐁 [muːs]-sel ","Chaining is funny 😁 !!<br><b>Modal Alertbox</b>")
       )
       </script>
+
+
     </body>
     </html>
