@@ -32,7 +32,7 @@ a small selector library
       }
     }
     `)
-      var myStyles={
+      const myStyles={
         container : `position:absolute;top:0px;
               left:0px;height:100%;
               width:100%;background:rgba(255,255,255,0.3);
